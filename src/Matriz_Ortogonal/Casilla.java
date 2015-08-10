@@ -15,7 +15,7 @@ import javax.swing.event.AncestorListener;
 
 public class Casilla {
  Casilla Izq=null,Der=null,Arriba=null,Abajo=null;   
- ObjetoJuego objeto;
+ ObjetoJuego objeto=null;
  boolean vacio=true;
  ImageIcon imagen=new ImageIcon("vacio.jpg");
  JButton etiqueta=new JButton();

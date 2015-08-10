@@ -4,7 +4,7 @@ package Matriz_Ortogonal;
 public class Matriz {
 
     Casilla cabeza=null;
-    int nx,ny;
+    int nx=0,ny=0;
     Casilla auxiliar;
     
     public Matriz(){
@@ -32,7 +32,7 @@ public class Matriz {
     anterior=nueva;
     
     }
-    ny++;
+    nx++;
     }
     
     public void AgregarColumna(){
@@ -51,7 +51,7 @@ public class Matriz {
     }
     anterior=nueva;
     }
-    nx++;
+    ny++;
     }
     
     public void EliminarFila(int n){}

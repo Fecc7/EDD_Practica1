@@ -9,6 +9,12 @@ import Matriz_Ortogonal.Matriz;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -64,6 +70,10 @@ public final class AgregarObjeto extends javax.swing.JFrame {
         B_Izq = new javax.swing.JButton();
         B_Der = new javax.swing.JButton();
         B_Abajo = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         T0 = new javax.swing.JLabel();
@@ -182,6 +192,19 @@ public final class AgregarObjeto extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("jButton5");
+
+        jButton6.setText("jButton6");
+
+        jButton7.setText("Graficar Lista");
+
+        jButton8.setText("Graficar Matriz");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -190,10 +213,18 @@ public final class AgregarObjeto extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(288, 288, 288)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(55, 55, 55)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8)
+                        .addGap(81, 81, 81)
                         .addComponent(ObjetoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(B_Izq)
@@ -217,14 +248,21 @@ public final class AgregarObjeto extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton2)
-                                .addComponent(jButton3))
                             .addComponent(ObjetoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(B_Der)
-                                .addComponent(B_Izq)))))
-                .addGap(67, 67, 67)
+                                .addComponent(B_Izq))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton7)
+                                    .addComponent(jButton8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton5)
+                                    .addComponent(jButton6))))))
+                .addGap(65, 65, 65)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(558, Short.MAX_VALUE))
         );
@@ -494,13 +532,10 @@ public final class AgregarObjeto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void MostrarEditar(){
-    matrizortogonal.AgregarFila();
-    matrizortogonal.AgregarColumna();
-    matrizortogonal.AgregarFila();
-    matrizortogonal.AgregarFila();    
-    matrizortogonal.AgregarColumna();
-    matrizortogonal.AgregarColumna();
-    matrizortogonal.AgregarColumna();
+   // matrizortogonal.AgregarFila();
+    //matrizortogonal.AgregarColumna();
+    //matrizortogonal.AgregarColumna();
+    
     }
     
     public void PintarMatriz(){
@@ -517,7 +552,7 @@ public final class AgregarObjeto extends javax.swing.JFrame {
     }
     CrearEscenario.setVisible(false);
     //CrearEscenario=new JFrame();    
-    CrearEscenario.setSize(1000, 650);
+    CrearEscenario.setSize(1300, 650);
     CrearEscenario.setVisible(true);
     CrearEscenario.setLayout(null);
     jPanel3.setVisible(false);
@@ -529,7 +564,7 @@ public final class AgregarObjeto extends javax.swing.JFrame {
     int x=0,y=0;
     Casilla auxiliar=matrizortogonal.getAuxiliar();
     for(Casilla i=auxiliar;i!=null;i=i.getDer()){
-    for(Casilla j=i;j!=null;j=j.getArriba()){
+    for(Casilla j=i;j!=null;j=j.getArriba()){    
     j.setEtiqueta(new JButton());
     j.getEtiqueta().setSize(50, 50);
     j.getEtiqueta().setLocation(50*x, 450-(y*50));
@@ -668,6 +703,114 @@ MostrarLista();
         PintarMatriz();
     }//GEN-LAST:event_B_AbajoActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    
+    String nodos="digraph grafica { \n" +
+" \n" +
+"rankdir=TB; \n" +
+" \n" +
+"label= \"Matriz Ortogal\"  \n" +
+"nodesep=0.8 \n" +
+"node [shape=record];\n" +
+"\n" +
+"subgraph g{\n";
+    Casilla ultimoesquina=null;
+    int y=0;
+    int x=-1;
+    
+    for(Casilla i=matrizortogonal.getCabeza();i!=null;i=i.getArriba()){
+    ultimoesquina=i;
+    x++;
+    }
+    int xi=x;
+    for(Casilla i=ultimoesquina;i!=null;i=i.getAbajo()){
+    y=0;
+    for(Casilla j=i;j!=null;j=j.getDer()){
+    if(j.getObjeto()!=null){
+    nodos+="node"+x+""+y+"[label=\"<f0> "+x+"|"+j.getObjeto().getNombre()+"|"+y+"\"];\n";   }
+    else{nodos+="node"+x+""+y+"[label=\"<f0> "+x+"|vacio|"+y+"\"];\n";
+    }
+    y++;
+    }
+    x--;
+    }
+    x=xi;y=0;
+    for(Casilla i=ultimoesquina;i!=null;i=i.getAbajo()){
+    y=0;
+    for(Casilla j=i;j!=null;j=j.getDer()){
+    if(j.getDer()!=null){
+    nodos+="node"+x+""+y+"->node"+x+""+(y+1)+";\n";
+    }
+    if(j.getIzq()!=null){
+    nodos+="node"+x+""+y+"->node"+x+""+(y-1)+";\n";
+    nodos+="{rank=same; node"+x+""+(y-1)+" node"+x+""+y+"}\n";
+    }
+    y++;
+    }
+    x--;
+    }
+    x=xi;y=0;
+    for(Casilla i=ultimoesquina;i!=null;i=i.getAbajo()){
+    y=0;
+    for(Casilla j=i;j!=null;j=j.getDer()){
+    if(j.getAbajo()!=null){
+    nodos+="node"+x+""+y+"->node"+(x-1)+""+y+";\n";
+    }
+    if(j.getArriba()!=null){
+    nodos+="node"+x+""+y+"->node"+(x+1)+""+y+";\n";
+    }
+    y++;
+    }
+    x--;
+    }
+    nodos+="}rank=same subgraph d{ \n" +
+" }\n" +
+"}";
+try
+{
+
+File archivo=new File("codigo.txt");
+try (
+               FileWriter escribir = new FileWriter(archivo,true)) {
+      
+            escribir.write(nodos);
+            
+
+        }
+}
+
+
+catch(Exception e)
+{
+System.out.println("Error al escribir");
+}
+try {
+      
+      String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+      
+      String fileInputPath = "C:\\Users\\Francis\\Documents\\NetBeansProjects\\EDD_Practica1\\codigo.txt";
+      String fileOutputPath = "C:\\Users\\Francis\\Documents\\NetBeansProjects\\EDD_Practica1\\Matriz Ortogonal.jpg";
+      
+      String tParam = "-Tjpg";
+      String tOParam = "-o";
+        
+      String[] cmd = new String[5];
+      cmd[0] = dotPath;
+      cmd[1] = tParam;
+      cmd[2] = fileInputPath;
+      cmd[3] = tOParam;
+      cmd[4] = fileOutputPath;
+                  
+      Runtime rt = Runtime.getRuntime();
+      
+      rt.exec( cmd );
+      
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    } finally {
+    }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
 public void MostrarLista(){
         n=new JFrame("Lista");
         n.setSize(500,500);
@@ -754,6 +897,10 @@ public void MostrarLista(){
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
