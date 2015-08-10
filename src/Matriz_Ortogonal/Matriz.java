@@ -6,6 +6,7 @@ public class Matriz {
     Casilla cabeza=null;
     int nx=0,ny=0;
     Casilla auxiliar;
+    Casilla Personaje=null;
     
     public Matriz(){
     Casilla c=new Casilla();
@@ -99,6 +100,14 @@ public class Matriz {
 
     public void setNy(int ny) {
         this.ny = ny;
+    }
+
+    public  Casilla getPersonaje() {
+        return Personaje;
+    }
+
+    public void setPersonaje(Casilla Personaje) {
+        this.Personaje = Personaje;
     }
 
     

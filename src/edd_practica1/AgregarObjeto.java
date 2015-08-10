@@ -9,10 +9,13 @@ import Matriz_Ortogonal.Matriz;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -24,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 
-public final class AgregarObjeto extends javax.swing.JFrame {
+public final class AgregarObjeto extends javax.swing.JFrame{
 
     Lista lista=new Lista();
     public JFrame n;
@@ -74,6 +77,7 @@ public final class AgregarObjeto extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         T0 = new javax.swing.JLabel();
@@ -133,8 +137,18 @@ public final class AgregarObjeto extends javax.swing.JFrame {
         );
 
         CrearEscenario.setSize(new java.awt.Dimension(1300, 750));
+        CrearEscenario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CrearEscenarioKeyPressed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel2KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -210,6 +224,13 @@ public final class AgregarObjeto extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("jButton9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -238,9 +259,11 @@ public final class AgregarObjeto extends javax.swing.JFrame {
                             .addComponent(B_Arriba, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(B_Abajo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(B_Der))
+                        .addComponent(B_Der)
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton9))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1178, Short.MAX_VALUE))
+                .addContainerGap(1049, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +278,9 @@ public final class AgregarObjeto extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ObjetoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(B_Der)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(B_Der)
+                                    .addComponent(jButton9))
                                 .addComponent(B_Izq))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -289,6 +314,11 @@ public final class AgregarObjeto extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -771,8 +801,22 @@ MostrarLista();
     nodos+="}rank=same subgraph d{ \n" +
 " }\n" +
 "}";
-    
-    
+    FileWriter fichero=null;
+    PrintWriter pw=null;
+    try{
+    fichero=new FileWriter("codigo.txt");
+    pw=new PrintWriter(fichero);
+    pw.print(nodos);
+    }
+    catch(Exception e){}
+    finally{
+    try{
+    if(null!=fichero){
+    fichero.close();
+    }
+    }
+    catch(Exception e){}
+    }
  
 try {
       
@@ -816,7 +860,7 @@ try {
 "rankdir=TB; \n" +
 " \n" +
 "label= \""+tipo+"\"  \n" +
-"nodesep=0.8 \n" +
+"nodesep=0.2 \n" +
 "node [shape=record];\n" +
 "\n" +
 "subgraph g{\n";
@@ -859,24 +903,22 @@ try {
     nodos+="}rank=same subgraph d{ \n" +
 " }\n" +
 "}";
-try
-{
-
-File archivo=new File("lista.txt");
-try (
-               FileWriter escribir = new FileWriter(archivo,true)) {
-      
-            escribir.write(nodos);
-            
-    escribir.close();
-        }
-}
-
-
-catch(Exception e)
-{
-System.out.println("Error al escribir");
-}
+FileWriter fichero=null;
+    PrintWriter pw=null;
+    try{
+    fichero=new FileWriter("lista.txt");
+    pw=new PrintWriter(fichero);
+    pw.print(nodos);
+    }
+    catch(Exception e){}
+    finally{
+    try{
+    if(null!=fichero){
+    fichero.close();
+    }
+    }
+    catch(Exception e){}
+    }
 try {
       
       String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
@@ -904,6 +946,26 @@ try {
     }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void CrearEscenarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CrearEscenarioKeyPressed
+    
+    }//GEN-LAST:event_CrearEscenarioKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+   
+    }//GEN-LAST:event_formKeyPressed
+
+    private void jPanel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel2KeyPressed
+    
+    }//GEN-LAST:event_jPanel2KeyPressed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    VentanaJuego.setMatriz(matrizortogonal);
+        VentanaJuego v=new VentanaJuego();
+        v.setVisible(true);
+        //CrearEscenario.setVisible(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
 public void MostrarLista(){
         n=new JFrame("Lista");
         n.setSize(500,500);
@@ -930,6 +992,7 @@ public void MostrarLista(){
         n.setLocationRelativeTo(null);
         n.setVisible(true);
 }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -994,6 +1057,7 @@ public void MostrarLista(){
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1008,4 +1072,6 @@ public void MostrarLista(){
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+    
 }

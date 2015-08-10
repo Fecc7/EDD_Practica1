@@ -4,8 +4,11 @@ package Matriz_Ortogonal;
 import Lista_Enlazada.Lista;
 import edd_practica1.AgregarObjeto;
 import edd_practica1.ObjetoJuego;
+import edd_practica1.VentanaJuego;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,14 +16,17 @@ import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
 
-public class Casilla {
+public class Casilla implements KeyListener{
  Casilla Izq=null,Der=null,Arriba=null,Abajo=null;   
  ObjetoJuego objeto=null;
  boolean vacio=true;
  ImageIcon imagen=new ImageIcon("vacio.jpg");
  JButton etiqueta=new JButton();
+ JLabel etiqueta2=new JLabel();
+ public static VentanaJuego frame=null;
 
     public void Click(final Lista l, final AgregarObjeto ao){
+        
     ActionListener listener = new ActionListener(){
     public void actionPerformed(ActionEvent e) {
     if(l.getInicio()!=null && l.getUltimo()!=null){
@@ -52,6 +58,14 @@ public class Casilla {
 
     public void setEtiqueta(JButton etiqueta) {
         this.etiqueta = etiqueta;
+    }
+
+    public JLabel getEtiqueta2() {
+        return etiqueta2;
+    }
+
+    public void setEtiqueta2(JLabel etiqueta2) {
+        this.etiqueta2 = etiqueta2;
     }
   
  
@@ -102,7 +116,11 @@ public class Casilla {
 
     public void setObjeto(ObjetoJuego objeto) {
         this.objeto = objeto;
+        if(objeto!=null){
         imagen=new ImageIcon(objeto.getTipo()+".jpg");
+        }else{
+        imagen=new ImageIcon("vacio.jpg");
+        }
     }
 
     public boolean isVacio() {
@@ -120,6 +138,27 @@ public class Casilla {
     public void setImagen(ImageIcon imagen) {
         this.imagen = imagen;
     }
- 
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    getDer().setObjeto(getObjeto());
+    getDer().setImagen(getImagen());
+    setObjeto(null);
+    setImagen(new ImageIcon("vacio.jpg"));
+    frame.CPersonaje();
+    frame.PintarMatriz();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
  
 }

@@ -9,15 +9,10 @@ public class EDD_Practica1 {
 
 
     public static void main(String[] args) {
-        AgregarObjeto ventana=new AgregarObjeto();
+      AgregarObjeto ventana=new AgregarObjeto();
         ventana.setVisible(true);
-        Matriz n=new Matriz();
-        n.AgregarColumna();
-        n.AgregarColumna();
-        n.AgregarColumna();
-        n.AgregarFila();
-        n.AgregarFila();
-        n.MostrarCasillas();
+       /*VentanaJuego v=new VentanaJuego();
+        v.setVisible(true);*/
     }
     
 }
