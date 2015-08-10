@@ -7,42 +7,83 @@ nodesep=0.8
 node [shape=record];
 
 subgraph g{
-node50[label="<f0> 5|Koopa|0"];
+node60[label="<f0> 6|vacio|0"];
+node61[label="<f0> 6|vacio|1"];
+node62[label="<f0> 6|vacio|2"];
+node63[label="<f0> 6|vacio|3"];
+node64[label="<f0> 6|vacio|4"];
+node65[label="<f0> 6|vacio|5"];
+node66[label="<f0> 6|vacio|6"];
+node67[label="<f0> 6|vacio|7"];
+node50[label="<f0> 5|vacio|0"];
 node51[label="<f0> 5|vacio|1"];
-node52[label="<f0> 5|vacio|2"];
+node52[label="<f0> 5|Castillo|2"];
 node53[label="<f0> 5|vacio|3"];
 node54[label="<f0> 5|vacio|4"];
-node55[label="<f0> 5|Suelo|5"];
+node55[label="<f0> 5|vacio|5"];
+node56[label="<f0> 5|vacio|6"];
+node57[label="<f0> 5|vacio|7"];
 node40[label="<f0> 4|vacio|0"];
-node41[label="<f0> 4|Goomba|1"];
+node41[label="<f0> 4|vacio|1"];
 node42[label="<f0> 4|vacio|2"];
 node43[label="<f0> 4|vacio|3"];
-node44[label="<f0> 4|Pared|4"];
+node44[label="<f0> 4|vacio|4"];
 node45[label="<f0> 4|vacio|5"];
+node46[label="<f0> 4|vacio|6"];
+node47[label="<f0> 4|vacio|7"];
 node30[label="<f0> 3|vacio|0"];
 node31[label="<f0> 3|vacio|1"];
-node32[label="<f0> 3|Pared|2"];
-node33[label="<f0> 3|Goomba|3"];
+node32[label="<f0> 3|vacio|2"];
+node33[label="<f0> 3|vacio|3"];
 node34[label="<f0> 3|vacio|4"];
 node35[label="<f0> 3|vacio|5"];
+node36[label="<f0> 3|vacio|6"];
+node37[label="<f0> 3|vacio|7"];
 node20[label="<f0> 2|vacio|0"];
 node21[label="<f0> 2|vacio|1"];
-node22[label="<f0> 2|Koopa|2"];
-node23[label="<f0> 2|Suelo|3"];
+node22[label="<f0> 2|vacio|2"];
+node23[label="<f0> 2|vacio|3"];
 node24[label="<f0> 2|vacio|4"];
 node25[label="<f0> 2|vacio|5"];
+node26[label="<f0> 2|vacio|6"];
+node27[label="<f0> 2|vacio|7"];
 node10[label="<f0> 1|vacio|0"];
-node11[label="<f0> 1|Ficha|1"];
+node11[label="<f0> 1|vacio|1"];
 node12[label="<f0> 1|vacio|2"];
 node13[label="<f0> 1|vacio|3"];
-node14[label="<f0> 1|Castillo|4"];
+node14[label="<f0> 1|vacio|4"];
 node15[label="<f0> 1|vacio|5"];
-node00[label="<f0> 0|Hongo|0"];
+node16[label="<f0> 1|vacio|6"];
+node17[label="<f0> 1|vacio|7"];
+node00[label="<f0> 0|vacio|0"];
 node01[label="<f0> 0|vacio|1"];
 node02[label="<f0> 0|vacio|2"];
 node03[label="<f0> 0|vacio|3"];
 node04[label="<f0> 0|vacio|4"];
-node05[label="<f0> 0|Mario|5"];
+node05[label="<f0> 0|vacio|5"];
+node06[label="<f0> 0|vacio|6"];
+node07[label="<f0> 0|vacio|7"];
+node60->node61;
+node61->node62;
+node61->node60;
+{rank=same; node60 node61}
+node62->node63;
+node62->node61;
+{rank=same; node61 node62}
+node63->node64;
+node63->node62;
+{rank=same; node62 node63}
+node64->node65;
+node64->node63;
+{rank=same; node63 node64}
+node65->node66;
+node65->node64;
+{rank=same; node64 node65}
+node66->node67;
+node66->node65;
+{rank=same; node65 node66}
+node67->node66;
+{rank=same; node66 node67}
 node50->node51;
 node51->node52;
 node51->node50;
@@ -56,8 +97,14 @@ node53->node52;
 node54->node55;
 node54->node53;
 {rank=same; node53 node54}
+node55->node56;
 node55->node54;
 {rank=same; node54 node55}
+node56->node57;
+node56->node55;
+{rank=same; node55 node56}
+node57->node56;
+{rank=same; node56 node57}
 node40->node41;
 node41->node42;
 node41->node40;
@@ -71,8 +118,14 @@ node43->node42;
 node44->node45;
 node44->node43;
 {rank=same; node43 node44}
+node45->node46;
 node45->node44;
 {rank=same; node44 node45}
+node46->node47;
+node46->node45;
+{rank=same; node45 node46}
+node47->node46;
+{rank=same; node46 node47}
 node30->node31;
 node31->node32;
 node31->node30;
@@ -86,8 +139,14 @@ node33->node32;
 node34->node35;
 node34->node33;
 {rank=same; node33 node34}
+node35->node36;
 node35->node34;
 {rank=same; node34 node35}
+node36->node37;
+node36->node35;
+{rank=same; node35 node36}
+node37->node36;
+{rank=same; node36 node37}
 node20->node21;
 node21->node22;
 node21->node20;
@@ -101,8 +160,14 @@ node23->node22;
 node24->node25;
 node24->node23;
 {rank=same; node23 node24}
+node25->node26;
 node25->node24;
 {rank=same; node24 node25}
+node26->node27;
+node26->node25;
+{rank=same; node25 node26}
+node27->node26;
+{rank=same; node26 node27}
 node10->node11;
 node11->node12;
 node11->node10;
@@ -116,8 +181,14 @@ node13->node12;
 node14->node15;
 node14->node13;
 {rank=same; node13 node14}
+node15->node16;
 node15->node14;
 {rank=same; node14 node15}
+node16->node17;
+node16->node15;
+{rank=same; node15 node16}
+node17->node16;
+{rank=same; node16 node17}
 node00->node01;
 node01->node02;
 node01->node00;
@@ -131,14 +202,38 @@ node03->node02;
 node04->node05;
 node04->node03;
 {rank=same; node03 node04}
+node05->node06;
 node05->node04;
 {rank=same; node04 node05}
+node06->node07;
+node06->node05;
+{rank=same; node05 node06}
+node07->node06;
+{rank=same; node06 node07}
+node60->node50;
+node61->node51;
+node62->node52;
+node63->node53;
+node64->node54;
+node65->node55;
+node66->node56;
+node67->node57;
 node50->node40;
+node50->node60;
 node51->node41;
+node51->node61;
 node52->node42;
+node52->node62;
 node53->node43;
+node53->node63;
 node54->node44;
+node54->node64;
 node55->node45;
+node55->node65;
+node56->node46;
+node56->node66;
+node57->node47;
+node57->node67;
 node40->node30;
 node40->node50;
 node41->node31;
@@ -151,6 +246,10 @@ node44->node34;
 node44->node54;
 node45->node35;
 node45->node55;
+node46->node36;
+node46->node56;
+node47->node37;
+node47->node57;
 node30->node20;
 node30->node40;
 node31->node21;
@@ -163,6 +262,10 @@ node34->node24;
 node34->node44;
 node35->node25;
 node35->node45;
+node36->node26;
+node36->node46;
+node37->node27;
+node37->node47;
 node20->node10;
 node20->node30;
 node21->node11;
@@ -175,6 +278,10 @@ node24->node14;
 node24->node34;
 node25->node15;
 node25->node35;
+node26->node16;
+node26->node36;
+node27->node17;
+node27->node37;
 node10->node00;
 node10->node20;
 node11->node01;
@@ -187,12 +294,18 @@ node14->node04;
 node14->node24;
 node15->node05;
 node15->node25;
+node16->node06;
+node16->node26;
+node17->node07;
+node17->node27;
 node00->node10;
 node01->node11;
 node02->node12;
 node03->node13;
 node04->node14;
 node05->node15;
+node06->node16;
+node07->node17;
 }rank=same subgraph d{ 
  }
 }

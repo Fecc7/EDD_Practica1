@@ -197,6 +197,11 @@ public final class AgregarObjeto extends javax.swing.JFrame {
         jButton6.setText("jButton6");
 
         jButton7.setText("Graficar Lista");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Graficar Matriz");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -766,24 +771,9 @@ MostrarLista();
     nodos+="}rank=same subgraph d{ \n" +
 " }\n" +
 "}";
-try
-{
-
-File archivo=new File("codigo.txt");
-try (
-               FileWriter escribir = new FileWriter(archivo,true)) {
-      
-            escribir.write(nodos);
-            
-
-        }
-}
-
-
-catch(Exception e)
-{
-System.out.println("Error al escribir");
-}
+    
+    
+ 
 try {
       
       String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
@@ -810,6 +800,109 @@ try {
     } finally {
     }
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    String tipo="";
+    Nodo inicio=null;
+    if(lista.getPila()==true){
+    tipo="Pila";
+    inicio=lista.getUltimo();
+    }else{
+    tipo="Cola";
+    inicio=lista.getInicio();
+    }
+    String nodos="digraph grafica { \n" +
+" \n" +
+"rankdir=TB; \n" +
+" \n" +
+"label= \""+tipo+"\"  \n" +
+"nodesep=0.8 \n" +
+"node [shape=record];\n" +
+"\n" +
+"subgraph g{\n";
+    int x=0;
+    if(lista.getPila()==true){
+    for(Nodo i=inicio;i!=null;i=i.getAnterior()){
+    nodos+="node"+x+"[label=\"<f0> "+x+"|"+i.getObjeto().getNombre()+"\"];\n";
+    x++;
+    }
+    }else{
+    for(Nodo i=inicio;i!=null;i=i.getSiguiente()){
+    nodos+="node"+x+"[label=\"<f0> "+x+"|"+i.getObjeto().getNombre()+"\"];\n";
+    x++;
+    }
+    }
+    
+    x=0;
+    if(lista.getPila()==true){
+    for(Nodo i=inicio;i!=null;i=i.getAnterior()){
+    if(i.getSiguiente()!=null){
+    nodos+="node"+(x-1)+"->node"+x+";\n";
+    }    
+    if(i.getAnterior()!=null){
+    nodos+="node"+x+"->node"+(x+1)+";\n";
+    }
+    x++;
+    }
+    }else{
+    for(Nodo i=inicio;i!=null;i=i.getSiguiente()){
+    if(i.getSiguiente()!=null){
+    nodos+="node"+x+"->node"+(x+1)+";\n";
+    }    
+    if(i.getAnterior()!=null){
+    nodos+="node"+(x-1)+"->node"+x+";\n";
+    }
+    x++;
+    }
+    }
+    
+    nodos+="}rank=same subgraph d{ \n" +
+" }\n" +
+"}";
+try
+{
+
+File archivo=new File("lista.txt");
+try (
+               FileWriter escribir = new FileWriter(archivo,true)) {
+      
+            escribir.write(nodos);
+            
+    escribir.close();
+        }
+}
+
+
+catch(Exception e)
+{
+System.out.println("Error al escribir");
+}
+try {
+      
+      String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
+      
+      String fileInputPath = "C:\\Users\\Francis\\Documents\\NetBeansProjects\\EDD_Practica1\\lista.txt";
+      String fileOutputPath = "C:\\Users\\Francis\\Documents\\NetBeansProjects\\EDD_Practica1\\"+tipo+".jpg";
+      
+      String tParam = "-Tjpg";
+      String tOParam = "-o";
+        
+      String[] cmd = new String[5];
+      cmd[0] = dotPath;
+      cmd[1] = tParam;
+      cmd[2] = fileInputPath;
+      cmd[3] = tOParam;
+      cmd[4] = fileOutputPath;
+                  
+      Runtime rt = Runtime.getRuntime();
+      
+      rt.exec( cmd );
+      
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    } finally {
+    }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 public void MostrarLista(){
         n=new JFrame("Lista");
