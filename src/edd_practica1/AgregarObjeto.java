@@ -207,6 +207,11 @@ public final class AgregarObjeto extends javax.swing.JFrame{
         });
 
         jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("jButton6");
 
@@ -965,6 +970,12 @@ try {
         //CrearEscenario.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+             String seleccion = JOptionPane.showInputDialog(null,"Ingrese numero de fila",JOptionPane.QUESTION_MESSAGE); 
+             int n=Integer.parseInt(seleccion);
+             
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 public void MostrarLista(){
         n=new JFrame("Lista");
