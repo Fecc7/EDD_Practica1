@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  *
  * @author Francis
  */
-public class VentanaJuego extends javax.swing.JFrame {
+public final class VentanaJuego extends javax.swing.JFrame {
 
     public static Matriz matrizortogonal=null;
     /**
@@ -31,13 +31,12 @@ public class VentanaJuego extends javax.swing.JFrame {
         this.setLayout(null);
       CPersonaje();
         PintarMatriz();  
+        
     }
     public static void setMatriz(Matriz m){
     matrizortogonal=m;
     }
-    public void Personaje(){
     
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,10 +94,11 @@ public class VentanaJuego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void CPersonaje(){
+    
     for(Casilla i=matrizortogonal.getCabeza();i!=null;i=i.getDer()){
     for(Casilla j=i;j!=null;j=j.getArriba()){ 
     if( j.getObjeto()!=null){
-    if(j.getDer()!=null && j.getObjeto().getTipo()==6){
+    if( j.getObjeto().getTipo()==6){
      matrizortogonal.setPersonaje(j);
     }}
     }}
@@ -107,6 +107,9 @@ public class VentanaJuego extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
     Casilla.frame=this;
     matrizortogonal.getPersonaje().keyPressed(evt);
+      System.out.println(matrizortogonal.getPersonaje().toString());   
+    
+    
    /* if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
     boolean d=false;
     bucle:
